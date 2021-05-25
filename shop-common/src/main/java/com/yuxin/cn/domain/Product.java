@@ -18,4 +18,5 @@ public class Product {
     private String pname;//商品名称
     private Double pprice;//商品价格
     private Integer stock;//库存
+
 }

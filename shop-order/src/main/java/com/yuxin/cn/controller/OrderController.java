@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yuxin.cn.domain.Order;
 import com.yuxin.cn.domain.Product;
 import com.yuxin.cn.service.OrderService;
+import com.yuxin.cn.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @Slf4j
@@ -24,6 +26,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     private DiscoveryClient discoveryClient;
@@ -63,11 +68,19 @@ public class OrderController {
     public Order order(@PathVariable("pid") Integer pid) {
         log.info("接收到{}号商品的下单请求,接下来调用商品微服务查询此商品信息", pid);
 
-        List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
-        ServiceInstance instance = instances.get(0);
+        // 1.手动负载均衡调用
+//        List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
+//        int index = new Random().nextInt(instances.size());
+//        ServiceInstance instance = instances.get(index);
+//        Product product =
+//                restTemplate.getForObject("http://"+instance.getHost()+":"+instance.getPort()+"/product/" + pid, Product.class);
 
-        Product product =
-                restTemplate.getForObject("http://"+instance.getHost()+":"+instance.getPort()+"/product/" + pid, Product.class);
+        // 2.Ribbon负载均衡
+//        Product product =
+//                restTemplate.getForObject("http://service-product/product/" + pid, Product.class);
+
+        // 3.Feign调用
+        Product product = productService.findByPid(pid);
 
         log.info("查询到{}号商品的信息,内容是:{}", pid, JSON.toJSONString(product));
 

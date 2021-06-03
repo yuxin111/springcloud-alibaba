@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Random;
 
-@RestController
+//@RestController
 @Slf4j
 public class OrderController {
 

@@ -24,6 +24,8 @@ spring:
       transport:
         port: 9999
         dashboard: localhost:8080
+      filter:
+        enabled: false
 service-product:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

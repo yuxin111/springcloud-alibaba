@@ -1,5 +1,6 @@
 package com.yuxin.cn.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.fastjson.JSON;
 import com.yuxin.cn.domain.Order;
 import com.yuxin.cn.domain.Product;
@@ -17,16 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController3 {
     @Autowired
     private OrderServiceImpl3 orderServiceImpl3;
+    int i = 0;
+
 
     @RequestMapping("/order/message1")
     public String message1() {
-        orderServiceImpl3.message();
+//        i++;
+//        if (i % 3 == 0) {
+//            throw new RuntimeException();
+//        }
+//        orderServiceImpl3.message();
         return "message1";
     }
 
     @RequestMapping("/order/message2")
     public String message2() {
-        orderServiceImpl3.message();
+//        orderServiceImpl3.message();
         return "message2";
+    }
+
+    @RequestMapping("/order/message3")
+    @SentinelResource("message3")
+    public String message3(String name,Integer age) {
+        return "message3"+name+age;
     }
 }

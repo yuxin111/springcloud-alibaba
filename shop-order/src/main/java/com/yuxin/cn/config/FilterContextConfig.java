@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterContextConfig {
 
-    @Bean
+//    @Bean
     public FilterRegistrationBean sentinelFilterRegistration(){
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new CommonFilter());

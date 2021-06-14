@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+//@Component
 public class RequestOriginParserDefinition implements RequestOriginParser {
 
     /**

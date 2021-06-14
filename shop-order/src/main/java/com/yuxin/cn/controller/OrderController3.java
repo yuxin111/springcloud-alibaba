@@ -42,4 +42,9 @@ public class OrderController3 {
     public String message3(String name,Integer age) {
         return "message3"+name+age;
     }
+
+    @RequestMapping("/order/message")
+    public String message() {
+        return orderServiceImpl3.message();
+    }
 }

@@ -6,7 +6,9 @@ import com.yuxin.cn.domain.Product;
 import com.yuxin.cn.service.OrderService;
 import com.yuxin.cn.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+import javax.annotation.Resources;
 import java.util.List;
 import java.util.Random;
 
-//@RestController
+@RestController
 @Slf4j
 public class OrderController {
 
@@ -81,6 +85,13 @@ public class OrderController {
 
         // 3.Feign调用
         Product product = productService.findByPid(pid);
+
+        if (product.getPid() == -100) {
+            Order order = new Order();
+            order.setOid(-100L);
+            order.setPname("下单失败");
+            return order;
+        }
 
         log.info("查询到{}号商品的信息,内容是:{}", pid, JSON.toJSONString(product));
 

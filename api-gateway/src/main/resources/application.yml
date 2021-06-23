@@ -7,9 +7,15 @@ spring:
     gateway:
       routes: # 路由数组[]
         - id: produce_route
-          uri: http://localhost:8081
+#          uri: http://localhost:8081
+          uri: lb://service-product # lb指的是负载均衡,后面跟的是具体微服务标识
           order: 1
           predicates:
             - Path=/product-serv/**
           filters:
             - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true # 让gateway从nacos种获取服务信息
+    nacos:
+      server-addr: localhost:8848 # 将gateway注册到nacos

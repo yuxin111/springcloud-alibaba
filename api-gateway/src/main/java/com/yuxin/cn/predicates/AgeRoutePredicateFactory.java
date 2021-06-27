@@ -46,7 +46,7 @@ public class AgeRoutePredicateFactory extends AbstractRoutePredicateFactory<AgeR
                         return false;
                     }
                 }
-                return false;
+                return true;
             }
         };
     }

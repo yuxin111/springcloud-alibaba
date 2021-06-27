@@ -13,9 +13,11 @@ spring:
           predicates:
             - Path=/product-serv/**
             - Before=2030-11-28T00:00:00.000+08:00
-            - Age=18,60 # 仅仅让age18-60之间的人访问
+#            - Age=18,60 # 仅仅让age18-60之间的人访问
           filters:
             - StripPrefix=1
+#            - SetStatus=250
+#            - Log=true,false
       discovery:
         locator:
           enabled: true # 让gateway从nacos种获取服务信息

@@ -16,6 +16,26 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @RequestMapping("/product/api1/demo1")
+    public String demo1(){
+        return "demo";
+    }
+
+    @RequestMapping("/product/api1/demo2")
+    public String demo2(){
+        return "demo";
+    }
+
+    @RequestMapping("/product/api2/demo1")
+    public String demo3(){
+        return "demo";
+    }
+
+    @RequestMapping("/product/api2/demo2")
+    public String demo4(){
+        return "demo";
+    }
+
     /**
      * 商品信息查询
      * @param pid

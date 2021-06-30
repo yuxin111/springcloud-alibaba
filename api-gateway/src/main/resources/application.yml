@@ -6,7 +6,7 @@ spring:
   cloud:
     gateway:
       routes: # 路由数组[]
-        - id: produce_route
+        - id: product_route
 #          uri: http://localhost:8081
           uri: lb://service-product # lb指的是负载均衡,后面跟的是具体微服务标识
           order: 1

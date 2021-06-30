@@ -10,7 +10,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 //自定义全局过滤器需要实现GlobalFilter和Ordered接口
-@Component
+//@Component
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
     //完成判断逻辑

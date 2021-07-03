@@ -1,0 +1,16 @@
+server:
+  port: 5113
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gz-cdb-11om9s8x.sql.tencentcdb.com:59171/zipkin?serverTimezone=GMT%2B8&useSSL=true
+    username: root
+    password: sC_6^NS+zZ8a
+zipkin:
+  storage:
+    type: mysql
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

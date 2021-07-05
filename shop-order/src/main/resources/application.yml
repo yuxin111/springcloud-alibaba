@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://gz-cdb-11om9s8x.sql.tencentcdb.com:59171/shop?serverTimezone=GMT%2B8&useSSL=true
     username: root
-    password: sC_6^NS+zZ8a
+    password: Yuxin1995
   jpa:
     properties:
       hibernate:

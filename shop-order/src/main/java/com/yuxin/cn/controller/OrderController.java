@@ -6,6 +6,7 @@ import com.yuxin.cn.domain.Product;
 import com.yuxin.cn.service.OrderService;
 import com.yuxin.cn.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +37,9 @@ public class OrderController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private RocketMQTemplate rocketMQTemplate;
 
     // 下单
 //    @RequestMapping("/order/prod/{pid}")
@@ -107,6 +111,8 @@ public class OrderController {
         orderService.createOrder(order);
 
         log.info("创建订单成功,订单信息为{}", JSON.toJSONString(order));
+
+        rocketMQTemplate.convertAndSend("order-topic",order);
 
         return order;
     }

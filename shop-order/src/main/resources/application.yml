@@ -38,3 +38,7 @@ service-product:
 feign:
   sentinel:
     enabled: true
+rocketmq:
+  name-server: 192.168.1.114:9876
+  producer:
+    group: shop-order

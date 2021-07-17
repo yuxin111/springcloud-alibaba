@@ -14,6 +14,9 @@ public class NacosConfigController {
     @Value("${config.appName}")
     private String appName;
 
+    @Value("${config.env}")
+    private String env;
+
     @Autowired
     private ConfigurableApplicationContext applicationContext;
 
@@ -25,5 +28,10 @@ public class NacosConfigController {
     @RequestMapping("/test-config2")
     public String testConfig2() {
         return appName;
+    }
+
+    @RequestMapping("/test-config3")
+    public String testConfig3() {
+        return env;
     }
 }

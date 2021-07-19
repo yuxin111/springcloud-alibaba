@@ -1,26 +1,26 @@
-#server:
-#  port: 8081
-#spring:
-#  zipkin:
-#    base-url: http://127.0.0.1:9411/ #zipkin server的请求地址
-#    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
-#  sleuth:
-#    sampler:
-#      probability: 1.0 #采样的百分比
-#  application:
-#    name: service-product
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://gz-cdb-11om9s8x.sql.tencentcdb.com:59171/shop?serverTimezone=GMT%2B8&useSSL=true
-#    username: root
-#    password: Yuxin1995
-#  jpa:
-#    properties:
-#      hibernate:
-#        hbm2ddl:
-#          auto: update
-#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
+server:
+  port: 8081
+spring:
+  zipkin:
+    base-url: http://127.0.0.1:9411/ #zipkin server的请求地址
+    discoveryClientEnabled: false #让nacos把它当成一个URL，而不要当做服务名
+  sleuth:
+    sampler:
+      probability: 1.0 #采样的百分比
+  application:
+    name: service-product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gz-cdb-11om9s8x.sql.tencentcdb.com:59171/shop?serverTimezone=GMT%2B8&useSSL=true
+    username: root
+    password: Yuxin1995
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

@@ -11,8 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
+
     @Override
     public Product findByPid(Integer pid) {
         return productDao.findById(pid).get();
+    }
+
+    @Transactional
+    @Override
+    public void reduceInventory(Integer pid, Integer number) {
+        Product product = productDao.findById(pid).get();
+        product.setStock(product.getStock() - number);
+        int i = 1/0;
+        //减库存
+        productDao.save(product);
     }
 }

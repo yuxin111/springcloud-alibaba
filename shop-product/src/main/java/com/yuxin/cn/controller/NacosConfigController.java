@@ -7,8 +7,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RefreshScope
+//@RestController
+//@RefreshScope
 public class NacosConfigController {
 
     @Value("${config.appName}")

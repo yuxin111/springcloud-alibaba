@@ -49,4 +49,10 @@ public class ProductController {
         return product;
     }
 
+    //减少库存
+     @RequestMapping("/product/reduceInventory")
+     public void reduceInventory(Integer pid, Integer number) {
+        productService.reduceInventory(pid, number);
+     }
+
 }

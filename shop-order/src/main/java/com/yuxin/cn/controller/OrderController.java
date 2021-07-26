@@ -22,7 +22,7 @@ import javax.annotation.Resources;
 import java.util.List;
 import java.util.Random;
 
-//@RestController
+@RestController
 @Slf4j
 public class OrderController {
 
@@ -38,8 +38,8 @@ public class OrderController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @Autowired
-    private RocketMQTemplate rocketMQTemplate;
+//    @Autowired
+//    private RocketMQTemplate rocketMQTemplate;
 
     // 下单
 //    @RequestMapping("/order/prod/{pid}")
@@ -112,7 +112,7 @@ public class OrderController {
 
         log.info("创建订单成功,订单信息为{}", JSON.toJSONString(order));
 
-        rocketMQTemplate.convertAndSend("order-topic",order);
+//        rocketMQTemplate.convertAndSend("order-topic",order);
 
         return order;
     }

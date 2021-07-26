@@ -34,7 +34,7 @@ spring:
         enabled: true
 service-product:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 feign:
   sentinel:
     enabled: true
